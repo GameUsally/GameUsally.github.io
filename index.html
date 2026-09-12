@@ -1,53 +1,1123 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Corey Game Workshop</title>
+  <meta
+    name="description"
+    content="Corey Game Workshop — a collection of games, experiments, and interactive projects."
+  />
+
+  <style>
+    :root {
+      --bg: #080a10;
+      --bg-soft: #0e111a;
+      --card: #111520;
+      --card-hover: #171c2a;
+      --text: #f5f7ff;
+      --muted: #9299ad;
+      --accent: #7c5cff;
+      --accent-2: #00d4ff;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background-color: #f4f4f4;
-        color: #333;
-        text-align: center;
-    }
-
-    header {
-        background-color: #24292f;
-        color: white;
-        padding: 50px 20px;
-    }
-
-    header h1 {
-        margin: 0;
-        font-size: 42px;
-    }
-
-    header p {
-        font-size: 18px;
-    }
-
-    main {
-        max-width: 800px;
-        margin: 40px auto;
-        padding: 20px;
-    }
-
-    .card {
-        background: white;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(124, 92, 255, 0.16), transparent 30%),
+        radial-gradient(circle at 85% 15%, rgba(0, 212, 255, 0.1), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
     }
 
     a {
-        color: #0969da;
-        text-decoration: none;
+      color: inherit;
+      text-decoration: none;
     }
 
-    a:hover {
-        text-decoration: underline;
+    button,
+    input {
+      font: inherit;
     }
+
+    /* ---------------- HEADER ---------------- */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8, 10, 16, 0.78);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      font-size: 20px;
+      box-shadow: 0 8px 25px rgba(124, 92, 255, 0.35);
+    }
+
+    .brand span {
+      font-size: 16px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .github-button {
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .github-button:hover {
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    /* ---------------- HERO ---------------- */
+
+    .hero {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+      padding: 105px 0 85px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(124, 92, 255, 0.25);
+      border-radius: 999px;
+      background: rgba(124, 92, 255, 0.08);
+      color: #bdb1ff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #5cff9d;
+      box-shadow: 0 0 12px #5cff9d;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      margin: auto;
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 0.98;
+      letter-spacing: -4px;
+      font-weight: 900;
+    }
+
+    .gradient-text {
+      background: linear-gradient(
+        100deg,
+        #ffffff 20%,
+        #b9aaff 50%,
+        #66e9ff 90%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 25px auto 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 11px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent), #6242ef);
+      border-color: transparent;
+      box-shadow: 0 10px 30px rgba(124, 92, 255, 0.25);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(124, 92, 255, 0.35);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* ---------------- MAIN ---------------- */
+
+    main {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+      font-size: 28px;
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .game-tools {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-box span {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 46px;
+      padding: 0 15px 0 43px;
+      color: white;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: rgba(124, 92, 255, 0.65);
+      box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.1);
+    }
+
+    .filter {
+      height: 46px;
+      padding: 0 15px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: var(--card);
+      color: white;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* ---------------- GAME GRID ---------------- */
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .game-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px);
+      background: var(--card-hover);
+      border-color: rgba(124, 92, 255, 0.35);
+    }
+
+    .game-image {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(124, 92, 255, 0.35),
+          rgba(0, 212, 255, 0.15)
+        ),
+        #191d29;
+    }
+
+    .placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .game-image::before,
+    .game-image::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    .game-image::before {
+      width: 180px;
+      height: 180px;
+      background: rgba(124, 92, 255, 0.28);
+      top: -70px;
+      right: -40px;
+    }
+
+    .game-image::after {
+      width: 130px;
+      height: 130px;
+      background: rgba(0, 212, 255, 0.18);
+      bottom: -65px;
+      left: -30px;
+    }
+
+    .game-content {
+      padding: 19px;
+    }
+
+    .game-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .game-title {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+
+    .badge {
+      flex-shrink: 0;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: rgba(124, 92, 255, 0.12);
+      color: #bdb1ff;
+    }
+
+    .game-description {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      min-height: 42px;
+    }
+
+    .game-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      color: #737b91;
+      font-size: 12px;
+    }
+
+    .game-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border);
+      color: #c9c3ff;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .game-link span {
+      transition: transform 0.2s ease;
+    }
+
+    .game-card:hover .game-link span {
+      transform: translateX(4px);
+    }
+
+    .no-results {
+      display: none;
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+    }
+
+    /* ---------------- ABOUT ---------------- */
+
+    .about {
+      margin: 110px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .about-card {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(17, 21, 32, 0.75);
+    }
+
+    .about-card h2 {
+      margin-bottom: 12px;
+      font-size: 25px;
+    }
+
+    .about-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      padding: 17px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* ---------------- FOOTER ---------------- */
 
     footer {
-        margin-top: 50px;
-        padding: 20px;
-        background-color: #24292f;
-        color: white;
+      border-top: 1px solid var(--border);
+      margin-top: 80px;
     }
-</style>
+
+    .footer-inner {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+      min-height: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+
+    @media (max-width: 900px) {
+      .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav {
+        height: 64px;
+      }
+
+      nav a:not(.github-button) {
+        display: none;
+      }
+
+      .hero {
+        padding: 75px 0 65px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .game-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .game-tools {
+        flex-direction: column;
+      }
+
+      .filter {
+        width: 100%;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        justify-content: center;
+        padding: 25px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+    <div class="nav">
+
+      <a href="#" class="brand">
+        <div class="brand-icon">C</div>
+        <span>Corey Game Workshop</span>
+      </a>
+
+      <nav>
+        <a href="#games">Games</a>
+        <a href="#about">About</a>
+
+        <!-- CHANGE THIS TO YOUR GITHUB PROFILE -->
+        <a
+          href="https://github.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="github-button"
+        >
+          GitHub ↗
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero">
+
+    <div class="eyebrow">
+      <span class="status-dot"></span>
+      Independent Game Workshop
+    </div>
+
+    <h1>
+      Welcome to
+      <span class="gradient-text">Corey's Workshop.</span>
+    </h1>
+
+    <p>
+      A collection of games, experiments, prototypes, and interactive
+      projects built by Corey. Pick a game and start playing.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#games" class="button button-primary">
+        Explore Games
+      </a>
+
+      <a
+        href="https://github.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button button-secondary"
+      >
+        View GitHub
+      </a>
+    </div>
+
+  </section>
+
+
+  <!-- ================= GAMES ================= -->
+
+  <main>
+
+    <section id="games">
+
+      <div class="section-heading">
+        <div>
+          <h2>Game Library</h2>
+          <p>Browse the current collection of projects.</p>
+        </div>
+      </div>
+
+
+      <!-- Search + Filter -->
+
+      <div class="game-tools">
+
+        <div class="search-box">
+          <span>⌕</span>
+
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search games..."
+            aria-label="Search games"
+          />
+        </div>
+
+        <select id="categoryFilter" class="filter">
+          <option value="all">All Genres</option>
+          <option value="action">Action</option>
+          <option value="arcade">Arcade</option>
+          <option value="puzzle">Puzzle</option>
+          <option value="strategy">Strategy</option>
+          <option value="experimental">Experimental</option>
+        </select>
+
+      </div>
+
+
+      <!-- Game Cards -->
+
+      <div class="game-grid" id="gameGrid">
+
+
+        <!-- GAME 1 -->
+
+        <article
+          class="game-card"
+          data-title="Neon Drift"
+          data-category="arcade"
+        >
+
+          <div class="game-image">
+            <div class="placeholder">
+              Game Artwork
+            </div>
+          </div>
+
+          <div class="game-content">
+
+            <div class="game-top">
+              <h3 class="game-title">Neon Drift</h3>
+              <span class="badge">Arcade</span>
+            </div>
+
+            <p class="game-description">
+              A fast-paced arcade experience built around speed,
+              reflexes, and neon-powered action.
+            </p>
+
+            <div class="game-meta">
+              <span>🎮 Web Game</span>
+              <span>•</span>
+              <span>2026</span>
+            </div>
+
+            <!-- CHANGE game.html TO YOUR GAME URL -->
+            <a href="games/neon-drift/" class="game-link">
+              Play Game
+              <span>→</span>
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- GAME 2 -->
+
+        <article
+          class="game-card"
+          data-title="Pixel Quest"
+          data-category="action"
+        >
+
+          <div class="game-image">
+            <div class="placeholder">
+              Game Artwork
+            </div>
+          </div>
+
+          <div class="game-content">
+
+            <div class="game-top">
+              <h3 class="game-title">Pixel Quest</h3>
+              <span class="badge">Action</span>
+            </div>
+
+            <p class="game-description">
+              Explore a pixel-inspired world filled with challenges,
+              secrets, and strange characters.
+            </p>
+
+            <div class="game-meta">
+              <span>🎮 Web Game</span>
+              <span>•</span>
+              <span>2026</span>
+            </div>
+
+            <a href="games/pixel-quest/" class="game-link">
+              Play Game
+              <span>→</span>
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- GAME 3 -->
+
+        <article
+          class="game-card"
+          data-title="Mind Grid"
+          data-category="puzzle"
+        >
+
+          <div class="game-image">
+            <div class="placeholder">
+              Game Artwork
+            </div>
+          </div>
+
+          <div class="game-content">
+
+            <div class="game-top">
+              <h3 class="game-title">Mind Grid</h3>
+              <span class="badge">Puzzle</span>
+            </div>
+
+            <p class="game-description">
+              Solve increasingly difficult grid-based puzzles and
+              test how far you can push your strategy.
+            </p>
+
+            <div class="game-meta">
+              <span>🧩 Puzzle</span>
+              <span>•</span>
+              <span>2026</span>
+            </div>
+
+            <a href="games/mind-grid/" class="game-link">
+              Play Game
+              <span>→</span>
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- GAME 4 -->
+
+        <article
+          class="game-card"
+          data-title="Void Runner"
+          data-category="action"
+        >
+
+          <div class="game-image">
+            <div class="placeholder">
+              Game Artwork
+            </div>
+          </div>
+
+          <div class="game-content">
+
+            <div class="game-top">
+              <h3 class="game-title">Void Runner</h3>
+              <span class="badge">Action</span>
+            </div>
+
+            <p class="game-description">
+              Survive the endless void, avoid incoming hazards,
+              and chase a new high score.
+            </p>
+
+            <div class="game-meta">
+              <span>⚡ Action</span>
+              <span>•</span>
+              <span>2026</span>
+            </div>
+
+            <a href="games/void-runner/" class="game-link">
+              Play Game
+              <span>→</span>
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- GAME 5 -->
+
+        <article
+          class="game-card"
+          data-title="Workshop Zero"
+          data-category="experimental"
+        >
+
+          <div class="game-image">
+            <div class="placeholder">
+              Game Artwork
+            </div>
+          </div>
+
+          <div class="game-content">
+
+            <div class="game-top">
+              <h3 class="game-title">Workshop Zero</h3>
+              <span class="badge">Experimental</span>
+            </div>
+
+            <p class="game-description">
+              An experimental project where unusual mechanics become
+              the foundation of the game.
+            </p>
+
+            <div class="game-meta">
+              <span>🧪 Experimental</span>
+              <span>•</span>
+              <span>Prototype</span>
+            </div>
+
+            <a href="games/workshop-zero/" class="game-link">
+              Play Game
+              <span>→</span>
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- GAME 6 -->
+
+        <article
+          class="game-card"
+          data-title="Star Command"
+          data-category="strategy"
+        >
+
+          <div class="game-image">
+            <div class="placeholder">
+              Game Artwork
+            </div>
+          </div>
+
+          <div class="game-content">
+
+            <div class="game-top">
+              <h3 class="game-title">Star Command</h3>
+              <span class="badge">Strategy</span>
+            </div>
+
+            <p class="game-description">
+              Build your fleet, make tactical decisions, and expand
+              across an unknown galaxy.
+            </p>
+
+            <div class="game-meta">
+              <span>🚀 Strategy</span>
+              <span>•</span>
+              <span>2026</span>
+            </div>
+
+            <a href="games/star-command/" class="game-link">
+              Play Game
+              <span>→</span>
+            </a>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <div class="no-results" id="noResults">
+        No games match your search.
+      </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about" id="about">
+
+      <div class="about-card">
+
+        <h2>Built in the Workshop</h2>
+
+        <p>
+          Corey Game Workshop is an independent space for building,
+          testing, and sharing games. From small experiments to
+          complete playable projects, this is where the games live.
+        </p>
+
+      </div>
+
+
+      <div class="about-card">
+
+        <h2>Workshop Stats</h2>
+
+        <p>
+          A growing collection of games and prototypes.
+        </p>
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>06</strong>
+            <span>Games</span>
+          </div>
+
+          <div class="stat">
+            <strong>05</strong>
+            <span>Genres</span>
+          </div>
+
+          <div class="stat">
+            <strong>∞</strong>
+            <span>Ideas</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <span>
+        © 2026 Corey Game Workshop. Built with HTML, CSS & JavaScript.
+      </span>
+
+      <div class="footer-links">
+
+        <a href="#games">Games</a>
+
+        <!-- CHANGE THIS TO YOUR GITHUB PROFILE -->
+        <a
+          href="https://github.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const gameCards = document.querySelectorAll(".game-card");
+    const noResults = document.getElementById("noResults");
+
+
+    function filterGames() {
+
+      const searchTerm =
+        searchInput.value.toLowerCase().trim();
+
+      const selectedCategory =
+        categoryFilter.value;
+
+      let visibleGames = 0;
+
+
+      gameCards.forEach(card => {
+
+        const title =
+          card.dataset.title.toLowerCase();
+
+        const category =
+          card.dataset.category.toLowerCase();
+
+
+        const matchesSearch =
+          title.includes(searchTerm);
+
+        const matchesCategory =
+          selectedCategory === "all" ||
+          category === selectedCategory;
+
+
+        if (matchesSearch && matchesCategory) {
+
+          card.style.display = "";
+
+          visibleGames++;
+
+        } else {
+
+          card.style.display = "none";
+
+        }
+
+      });
+
+
+      noResults.style.display =
+        visibleGames === 0 ? "block" : "none";
+
+    }
+
+
+    searchInput.addEventListener(
+      "input",
+      filterGames
+    );
+
+    categoryFilter.addEventListener(
+      "change",
+      filterGames
+    );
+
+  </script>
+
+</body>
+</html>
