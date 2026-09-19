@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Coreyhao3 — Scratch Profile</title>
+
+  <meta
+    name="description"
+    content="Explore Coreyhao3's Scratch profile, projects, games, and creations."
+  >
+
+  <meta name="theme-color" content="#080a10">
+
+  <style>
+    :root {
+      --bg: #080a10;
+      --card: #111520;
+      --card-hover: #171c2a;
+      --text: #f5f7ff;
+      --muted: #9299ad;
+      --accent: #ff9f1c;
+      --accent-2: #ff6b35;
+      --purple: #7c5cff;
+      --border: rgba(255,255,255,.08);
+      --radius: 20px;
+      --container: 1000px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      color: var(--text);
+      line-height: 1.6;
+
+      background:
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(255,159,28,.16),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 85% 10%,
+          rgba(124,92,255,.14),
+          transparent 28%
+        ),
+        var(--bg);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(255,159,28,.8);
+      outline-offset: 3px;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      border-bottom: 1px solid var(--border);
+
+      background: rgba(8,10,16,.78);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(var(--container), calc(100% - 40px));
+      min-height: 72px;
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent-2)
+        );
+
+      color: white;
+      font-weight: 900;
+
+      box-shadow:
+        0 8px 25px rgba(255,159,28,.25);
+    }
+
+    .back-button {
+      padding: 9px 15px;
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      background: rgba(255,255,255,.04);
+
+      color: var(--muted);
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+    }
+
+    .back-button:hover {
+      background: rgba(255,255,255,.09);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+
+    .hero {
+      width: min(var(--container), calc(100% - 40px));
+      margin: auto;
+
+      padding: 90px 0 55px;
+
+      text-align: center;
+    }
+
+    .scratch-icon {
+      width: 105px;
+      height: 105px;
+
+      margin: 0 auto 25px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 30px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff9f1c,
+          #ff6b35
+        );
+
+      color: white;
+
+      font-size: 48px;
+
+      box-shadow:
+        0 20px 55px rgba(255,120,30,.28);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+
+      padding: 7px 13px;
+
+      margin-bottom: 18px;
+
+      border: 1px solid rgba(255,159,28,.25);
+      border-radius: 999px;
+
+      background: rgba(255,159,28,.08);
+
+      color: #ffc46b;
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 72px);
+
+      line-height: 1;
+
+      letter-spacing: -3px;
+
+      font-weight: 900;
+    }
+
+    .gradient-text {
+      background:
+        linear-gradient(
+          100deg,
+          #fff,
+          #ffd27d,
+          #ff9f1c
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 650px;
+
+      margin: 22px auto 0;
+
+      color: var(--muted);
+
+      font-size: 17px;
+    }
+
+    /* PROFILE */
+
+    main {
+      width: min(var(--container), calc(100% - 40px));
+      margin: auto;
+    }
+
+    .profile-card {
+      display: grid;
+
+      grid-template-columns: 220px 1fr;
+
+      gap: 35px;
+
+      padding: 35px;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,159,28,.07),
+          rgba(124,92,255,.05)
+        ),
+        rgba(17,21,32,.85);
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.35);
+    }
+
+    .profile-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      text-align: center;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 160px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff9f1c,
+          #ff6b35,
+          #7c5cff
+        );
+
+      color: white;
+
+      font-size: 54px;
+      font-weight: 900;
+
+      box-shadow:
+        0 15px 45px rgba(255,120,30,.25);
+    }
+
+    .username {
+      margin-top: 18px;
+
+      font-size: 20px;
+      font-weight: 850;
+    }
+
+    .scratch-label {
+      margin-top: 4px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .profile-content h2 {
+      font-size: 30px;
+
+      letter-spacing: -.8px;
+    }
+
+    .profile-content p {
+      margin-top: 12px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.75;
+    }
+
+    /* BUTTONS */
+
+    .actions {
+      display: flex;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+      margin-top: 25px;
+    }
+
+    .button {
+      min-height: 48px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0 20px;
+
+      border-radius: 11px;
+
+      font-size: 14px;
+      font-weight: 800;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+    }
+
+    .button-primary {
+      background:
+        linear-gradient(
+          135deg,
+          #ff9f1c,
+          #ff6b35
+        );
+
+      box-shadow:
+        0 10px 30px rgba(255,120,30,.22);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 15px 35px rgba(255,120,30,.32);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+
+      background: rgba(255,255,255,.04);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255,255,255,.09);
+
+      transform: translateY(-2px);
+    }
+
+    /* INFO */
+
+    .section {
+      margin-top: 35px;
+    }
+
+    .section h2 {
+      margin-bottom: 18px;
+
+      font-size: 25px;
+
+      letter-spacing: -.6px;
+    }
+
+    .info-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 15px;
+    }
+
+    .info-card {
+      padding: 23px;
+
+      border: 1px solid var(--border);
+      border-radius: 15px;
+
+      background: rgba(17,21,32,.75);
+    }
+
+    .info-icon {
+      font-size: 25px;
+    }
+
+    .info-card strong {
+      display: block;
+
+      margin-top: 8px;
+
+      font-size: 17px;
+    }
+
+    .info-card span {
+      display: block;
+
+      margin-top: 3px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    /* PROJECT PREVIEW */
+
+    .projects-card {
+      padding: 30px;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      background: rgba(17,21,32,.75);
+    }
+
+    .project {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 18px 0;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .project:first-child {
+      padding-top: 0;
+    }
+
+    .project-info h3 {
+      font-size: 16px;
+    }
+
+    .project-info p {
+      margin-top: 3px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .project-arrow {
+      color: #ffc46b;
+
+      font-size: 20px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 90px;
+
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      width: min(var(--container), calc(100% - 40px));
+
+      min-height: 100px;
+
+      margin: auto;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      .nav {
+        min-height: 64px;
+      }
+
+      .brand span {
+        font-size: 14px;
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+      .profile-card {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+      }
+
+      .profile-side {
+        margin: auto;
+      }
+
+      .actions {
+        justify-content: center;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project {
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+
+        justify-content: center;
+
+        padding: 25px 0;
+
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 420px) {
+
+      .nav,
+      .hero,
+      main,
+      .footer-inner {
+        width: calc(100% - 28px);
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .profile-card {
+        padding: 25px 20px;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="nav">
+
+      <a
+        href="index.html"
+        class="brand"
+        aria-label="Corey Game Workshop home"
+      >
+        <div class="brand-icon">C</div>
+
+        <span>
+          Corey Game Workshop
+        </span>
+      </a>
+
+      <a
+        href="index.html"
+        class="back-button"
+      >
+        ← Back to Workshop
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="scratch-icon">
+      🐱
+    </div>
+
+    <div class="eyebrow">
+      Scratch Creator Profile
+    </div>
+
+    <h1>
+      <span class="gradient-text">
+        Coreyhao3
+      </span>
+    </h1>
+
+    <p class="hero-description">
+      Explore Coreyhao3's Scratch profile and discover
+      games, projects, experiments, and other creations.
+    </p>
+
+  </section>
+
+
+  <!-- MAIN -->
+
+  <main>
+
+    <!-- PROFILE -->
+
+    <section class="profile-card">
+
+      <div class="profile-side">
+
+        <div class="avatar">
+          C
+        </div>
+
+        <div class="username">
+          @coreyhao3
+        </div>
+
+        <div class="scratch-label">
+          Scratch Creator
+        </div>
+
+      </div>
+
+
+      <div class="profile-content">
+
+        <h2>
+          Coreyhao3 on Scratch
+        </h2>
+
+        <p>
+          This is the dedicated Coreyhao3 Scratch page
+          for Corey Game Workshop. Visit the Scratch
+          profile to see the creator's shared projects,
+          games, and experiments.
+        </p>
+
+        <div class="actions">
+
+          <a
+            href="https://scratch.mit.edu/users/coreyhao3/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-primary"
+          >
+            Visit Scratch Profile ↗
+          </a>
+
+          <a
+            href="index.html"
+            class="button button-secondary"
+          >
+            ← Back to Games
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+
+    <section class="section">
+
+      <h2>
+        Profile
+      </h2>
+
+      <div class="info-grid">
+
+        <div class="info-card">
+
+          <div class="info-icon">
+            🎮
+          </div>
+
+          <strong>
+            Games & Projects
+          </strong>
+
+          <span>
+            Explore projects published on Scratch.
+          </span>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <div class="info-icon">
+            🧪
+          </div>
+
+          <strong>
+            Experiments
+          </strong>
+
+          <span>
+            Discover creative experiments and prototypes.
+          </span>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <div class="info-icon">
+            ⭐
+          </div>
+
+          <strong>
+            Scratch Creator
+          </strong>
+
+          <span>
+            Follow the profile for future creations.
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCRATCH LINK -->
+
+    <section class="section">
+
+      <div class="projects-card">
+
+        <div class="project">
+
+          <div class="project-info">
+
+            <h3>
+              Coreyhao3 Scratch Profile
+            </h3>
+
+            <p>
+              Open the complete profile on Scratch.
+            </p>
+
+          </div>
+
+          <a
+            href="https://scratch.mit.edu/users/coreyhao3/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-arrow"
+            aria-label="Open Coreyhao3 Scratch profile"
+          >
+            ↗
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <span>
+        © 2026 Corey Game Workshop.
+      </span>
+
+      <a
+        href="https://scratch.mit.edu/users/coreyhao3/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Coreyhao3 on Scratch ↗
+      </a>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
